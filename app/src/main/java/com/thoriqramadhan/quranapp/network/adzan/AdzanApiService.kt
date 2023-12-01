@@ -9,11 +9,11 @@ interface AdzanApiService {
         @Path("city") city : String
     ) : CityResponse
 
-    @GET("sholat/kadwal/{idCity}/{year}/{month}/{date}")
+    @GET("sholat/jadwal/{idCity}/{year}/{month}/{date}")
     suspend fun getDailyAdzanTime(
         @Path("idCity") id : String,
         @Path("year") year : String,
         @Path("month") month : String,
-        @Path("data") date : String,
+        @Path("date") date : String
     ) : DailyResponse
 }

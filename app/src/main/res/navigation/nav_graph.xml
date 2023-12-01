@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_quran" />
     <fragment
         android:id="@+id/nav_adzan"
-        android:name="com.thoriqramadhan.quranapp.presentation.AdzanFragment"
+        android:name="com.thoriqramadhan.quranapp.presentation.adzan.AdzanFragment"
         android:label="fragment_adzan"
         tools:layout="@layout/fragment_adzan" />
 </navigation>

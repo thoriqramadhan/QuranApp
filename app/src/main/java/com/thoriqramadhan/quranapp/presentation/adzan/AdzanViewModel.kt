@@ -1,4 +1,4 @@
-package com.thoriqramadhan.quranapp.presentation
+package com.thoriqramadhan.quranapp.presentation.adzan
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -7,6 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel">Cancel</string>
     <string name="play">Play</string>
+    <string name="playing_audio">Playing</string>
     <string name="isya">isya</string>
     <string name="imsaks">imsak</string>
     <string name="subuh">subuh</string>

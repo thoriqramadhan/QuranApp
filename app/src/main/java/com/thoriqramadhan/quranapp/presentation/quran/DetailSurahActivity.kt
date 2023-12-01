@@ -30,9 +30,6 @@ class DetailSurahActivity : AppCompatActivity() {
     private var _surah: Surah? = null
     private val surah get() = _surah as Surah
 
-    private var _mediaPlayer: MediaPlayer? = null
-    private val mediaPlayer get() = _mediaPlayer as MediaPlayer
-
     private val quranViewModel: QuranViewModel by viewModels{ ViewModelFactory(this) }
 
 
@@ -69,6 +66,9 @@ class DetailSurahActivity : AppCompatActivity() {
                         Snackbar.make(binding.root, "Error: " + it.message, Snackbar.LENGTH_INDEFINITE).show()
                         showLoading(false)
                     }
+                    else -> {
+                        Toast.makeText(this, "Sorry something error.", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }else {
@@ -94,7 +94,7 @@ class DetailSurahActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog(dataAudio: Ayah) {
-        _mediaPlayer = MediaPlayer()
+        val mediaPlayer = MediaPlayer()
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog).create()
         val view = CustomViewAlertdialogBinding.inflate(layoutInflater)
         builder.setView(view.root)
@@ -107,7 +107,7 @@ class DetailSurahActivity : AppCompatActivity() {
         }
         view.btnPlay.setOnClickListener {
             it.isEnabled = false
-            view.btnPlay.text = getString(R.string.play)
+            view.btnPlay.text = getString(R.string.playing_audio)
             mediaPlayer.setAudioAttributes(
                 AudioAttributes.Builder()
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)

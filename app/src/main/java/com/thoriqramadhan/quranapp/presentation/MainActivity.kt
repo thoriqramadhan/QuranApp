@@ -4,23 +4,18 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Geocoder
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.snackbar.Snackbar
 import com.thoriqramadhan.quranapp.R
 import com.thoriqramadhan.quranapp.databinding.ActivityMainBinding
-import java.util.Locale
+import com.thoriqramadhan.quranapp.utils.LOCATION_PERMISSION_REQ_CODE
 
  class MainActivity : AppCompatActivity() {
      private var _binding: ActivityMainBinding? = null
@@ -30,6 +25,7 @@ import java.util.Locale
          super.onCreate(savedInstanceState)
          _binding = ActivityMainBinding.inflate(layoutInflater)
          setContentView(binding.root)
+         getUserLocation()
 
          val bottomNavView = binding.navBottomView
          val navHostFragment =
@@ -37,29 +33,30 @@ import java.util.Locale
          val navController = navHostFragment.navController
          bottomNavView.setupWithNavController(navController)
      }
+
      private fun getUserLocation() {
          if (checkLocationPermission()) {
              if (isLocationOn()) {
                  val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
                  fusedLocation.lastLocation
-
-//                fusedLocation.lastLocation.addOnCompleteListener {
-//                    if (it.result != null) {
-//                        val geocoder = Geocoder(this, Locale.getDefault())
-//                        geocoder.getFromLocation(
-//                            it.result.latitude,
-//                            it.result.longitude,
-//                            1
-//                        ) { listAddress ->
-//                            val city = listAddress[0].subAdminArea
-//                            val resultOfCity = city.split(" ")
-//                            Snackbar.make(binding.root, resultOfCity[1], Snackbar.LENGTH_INDEFINITE)
-//                                .show()
-//                        }
-//                    } else {
-//                        Toast.makeText(this, "Sorry something wrong", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
+/*
+                fusedLocation.lastLocation.addOnCompleteListener {
+                    if (it.result != null) {
+                        val geocoder = Geocoder(this, Locale.getDefault())
+                        geocoder.getFromLocation(
+                            it.result.latitude,
+                            it.result.longitude,
+                            1
+                        ) { listAddress ->
+                            val city = listAddress[0].subAdminArea
+                            val resultOfCity = city.split(" ")
+                            Snackbar.make(binding.root, resultOfCity[1], Snackbar.LENGTH_INDEFINITE)
+                                .show()
+                        }
+                    } else {
+                        Toast.makeText(this, "Sorry something wrong", Toast.LENGTH_SHORT).show()
+                    }
+                }*/
              } else {
                  Toast.makeText(this, "Please turn on your location", Toast.LENGTH_SHORT).show()
                  val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
@@ -110,10 +107,13 @@ import java.util.Locale
          grantResults: IntArray
      ) {
          super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-         if (requestCode == LOCATION_PERMISSION_REQ_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-             getUserLocation()
+         if (requestCode == LOCATION_PERMISSION_REQ_CODE) {
+             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                 getUserLocation()
+             } else {
+                 Toast.makeText(this, "Need Permission Location.", Toast.LENGTH_SHORT).show()
+             }
          } else {
-             Toast.makeText(this, "Need to give Permission Location.", Toast.LENGTH_SHORT).show()
              getUserLocation()
          }
      }

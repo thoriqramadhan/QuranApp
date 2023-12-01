@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.thoriqramadhan.quranapp.core.di.Injection
+import com.thoriqramadhan.quranapp.presentation.adzan.AdzanViewModel
 import com.thoriqramadhan.quranapp.presentation.quran.QuranViewModel
 
 @Suppress("UNCHECKED_CAST")

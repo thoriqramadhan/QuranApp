@@ -1,19 +1,15 @@
-package com.thoriqramadhan.quranapp.presentation
+package com.thoriqramadhan.quranapp.presentation.adzan
 
-import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.thoriqramadhan.quranapp.R
 import com.thoriqramadhan.quranapp.core.data.Resource
 import com.thoriqramadhan.quranapp.databinding.FragmentAdzanBinding
-import java.util.Locale
+import com.thoriqramadhan.quranapp.presentation.ViewModelFactory
 
 class AdzanFragment : Fragment() {
     private var _binding: FragmentAdzanBinding? = null

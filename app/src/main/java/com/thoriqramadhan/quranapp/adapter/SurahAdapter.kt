@@ -26,7 +26,7 @@ class SurahAdapter : RecyclerView.Adapter<SurahAdapter.MyViewHolder>() {
         val quranAudio = quranEditionItems[1].ayahs.get(position)
         val quranIndonesia = quranEditionItems[2].ayahs.get(position)
         holder.binding.apply {
-            itemAyah.text = dataAyah.numberInSurah.toString()
+            itemNumberAyah.text = dataAyah.numberInSurah.toString()
             itemAyah.text = dataAyah.text
             itemTranslation.text = quranIndonesia.text
             this.root.setOnClickListener {
