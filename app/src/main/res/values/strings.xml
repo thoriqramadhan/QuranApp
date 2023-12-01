@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">QuranApp</string>
+    <string name="adzan">adzan</string>
+    <string name="quran">quran</string>
+    <string name="doa">doa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel">Cancel</string>
+    <string name="play">Play</string>
+    <string name="isya">isya</string>
+    <string name="imsaks">imsak</string>
+    <string name="subuh">subuh</string>
+    <string name="dzuhur">dzuhur</string>
+    <string name="ashar">ashar</string>
+    <string name="maghrib">maghrib</string>
+</resources>
